@@ -50,7 +50,7 @@ class Participants extends REST_Controller {
         $this->form_validation->set_rules("profession", "Profession", "callback_checkPofession");
         $this->form_validation->set_rules("locality", "Locality", "required");
         $this->form_validation->set_rules("no_of_guests", "Number of Guests", "required|less_than[2]");
-        $this->form_validation->set_rules("address", "Address", "required");
+        $this->form_validation->set_rules("address", "Address", "required|min_length[1]|max_length[50]");
         //checking form submittion have any error or not
         if ($this->form_validation->run() === false) {
             // we have some errors

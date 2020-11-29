@@ -83,7 +83,7 @@ class Participants extends REST_Controller {
         $no_of_guests = $this->security->xss_clean($client_data->no_of_guests);
         $address = $this->security->xss_clean($client_data->address);
         
-        $config = array(array('field' => 'name', 'label' => 'name', 'rules' => 'required'), array('field' => 'age', 'label' => 'Age', 'rules' => 'required|integer',), array('field' => 'dob', 'label' => 'Date of birth', 'rules' => array('regex_match[/^((0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](19|20)\d\d)$/]')), array('field' => 'profession', 'label' => 'Profession', 'rules' => 'required|callback_checkPofession',), array('field' => 'locality', 'label' => 'name', 'rules' => 'required'), array('field' => 'no_of_guests', 'label' => 'Number of Guests', 'rules' => 'required|less_than[2]',), array('field' => 'address', 'label' => 'Address', 'rules' => 'required',));
+        $config = array(array('field' => 'name', 'label' => 'name', 'rules' => 'required'), array('field' => 'age', 'label' => 'Age', 'rules' => 'required|integer',), array('field' => 'dob', 'label' => 'Date of birth', 'rules' => array('regex_match[/^((0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](19|20)\d\d)$/]')), array('field' => 'profession', 'label' => 'Profession', 'rules' => 'required|callback_checkPofession',), array('field' => 'locality', 'label' => 'name', 'rules' => 'required'), array('field' => 'no_of_guests', 'label' => 'Number of Guests', 'rules' => 'required|less_than[2]',), array('field' => 'address', 'label' => 'Address', 'rules' => 'required|min_length[1]|max_length[50]',));
 
 
         $this->form_validation->set_data($data);

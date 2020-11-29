@@ -17,9 +17,18 @@ class ParticipantModel extends CI_Model{
   }
   
 
-  public function get_participants($limit=0, $offset=10){
-    $query = $this->db->get_where('participants', array(), $limit, $offset);
-    return $query->result();
+  public function get_participants($offset, $limit){
+   // $query = $this->db->get('participants', $limit, $offset);
+
+      //  echo $this->db->limit($offset,$limit)->get_compiled_select('', FALSE);
+
+        $this->db->select('*');
+        $this->db->from('participants');
+        $this->db->limit($limit, $offset);
+        $query = $this->db->get();
+
+
+        return $query->result();
   }
 
 
@@ -38,5 +47,26 @@ class ParticipantModel extends CI_Model{
    public function update_data($table, $id, $data){
       $this->db->where("id", $id);
       return $this->db->update($table, $data);
+      
+
+
    }
+
+
+  public function checkDataById($id){
+        
+        $this->db->select('*');
+        $this->db->from('participants');
+
+
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+        $data = $query->result();
+        
+        if(empty($data)) return FALSE;
+        else return true;
+  }
+
+
+
 }

@@ -1,6 +1,8 @@
 <?php
 
-function convertToDate($string){
-	$time_input = strtotime($string);  
-	return date('Y-m-d' , $time_input);  
+function convertToDate($dobString){
+	list($d , $m, $y) = explode("/", $dobString);  
+	return ($y . '/' . $m . '/' . $d);  
 }
+
+

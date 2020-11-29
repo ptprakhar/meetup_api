@@ -1,13 +1,15 @@
 <?php
 
-/***************************************************
-****************************************************
-  @auther : Prakhar
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+
+/**
+  @author :: Prakhar
   @method : GET, POST, PUT
   @description
   This API ReturnS the list of participants registered
 
-*****************************************************/  
+**/  
 
 
 require APPPATH.'libraries/REST_Controller.php';
@@ -74,7 +76,6 @@ public function index_post($limit = 0, $offset = 10){
   //Storing the data 
   //POST Mehtod
 
-
     // filtering form XSS
     $name = $this->security->xss_clean($this->input->post("name"));
     $age = $this->security->xss_clean($this->input->post("age"));
@@ -84,7 +85,6 @@ public function index_post($limit = 0, $offset = 10){
     $no_of_guests = $this->security->xss_clean($this->input->post("no_of_guests"));
     $address = $this->security->xss_clean($this->input->post("address"));
 
-
     // form validation for inputs
     $this->form_validation->set_rules("name", "name", "required");
     $this->form_validation->set_rules("age", "Age", "required|integer");
@@ -93,19 +93,13 @@ public function index_post($limit = 0, $offset = 10){
     $this->form_validation->set_rules("locality", "Locality", "required");
     $this->form_validation->set_rules("no_of_guests", "Number of Guests", "required|less_than[2]");
     $this->form_validation->set_rules("address", "Address", "required");
-    
-
-    
    
     //checking form submittion have any error or not
     if($this->form_validation->run() === FALSE){
-
-
-
       // we have some errors
       $this->response(array(
         "status" => false,
-        "message" => "Form validation failed, please enter data in correct format " .$message
+        "message" => "validations failed, please enter data in correct format " 
       ) , REST_Controller::HTTP_OK);
 
 
@@ -120,33 +114,22 @@ public function index_post($limit = 0, $offset = 10){
           'locality' =>   $locality,
           'no_of_guests' => $no_of_guests,
           'address' => $address
-
-
       );
 
       if($this->ParticipantModel->insert_data('participants' , $insertData)){
           //Sucessfully Inserterd
-
             $this->response(array(
               "status" => true,
               "message" => "Record has been created!"
             ) , REST_Controller::HTTP_OK);
-
       }else{
         //Not inserted, some error found while inserting
-
           $this->response(array(
             "status" => false,
             "message" => "Some error in inseting the data! Please Try Again"
           ) , REST_Controller::HTTP_OK);
-      
-
       }
-
-
     }
-  
-
 }
 
 
@@ -159,7 +142,7 @@ Update record
 public function index_put($id){
 
 
-   $client_data = json_decode(json_encode(json_decode((file_get_contents("php://input")))));
+   $client_data = json_decode((file_get_contents("php://input")));
    $data = (array) $client_data;
   
    // filtering form XSS
@@ -225,7 +208,7 @@ if($this->form_validation->run()==FALSE){
 
            $this->response(array(
               "status" => true,
-              "message" => "Form validations failed!"
+              "message" => "Validations failed!"
             ) , REST_Controller::HTTP_NOT_FOUND);
 
 }else{
@@ -290,7 +273,6 @@ if($this->form_validation->run()==FALSE){
   }//Form validations
 
 }
-
 
 
 

@@ -1,0 +1,105 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Local",
+		"_postman_id": "1ba59a9f-5ab7-0092-72e8-6f62bdd08bce",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List API",
+			"request": {
+				"url": "http://localhost/MeetupAPI/index.php/api/participants/0/10",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Register API",
+			"request": {
+				"url": "http://localhost/MeetupAPI/index.php/api/participants",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Prakhar-2",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "age",
+							"value": "31",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "dob",
+							"value": "23/11/1989",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "profession",
+							"value": "Student",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "locality",
+							"value": "Thane",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "no_of_guests",
+							"value": "1",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "address",
+							"value": "Address",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update API",
+			"request": {
+				"url": "http://localhost/MeetupAPI/index.php/api/participants/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Prakhar-2323\",\n    \"age\": 22,\n    \"dob\": \"23/11/1988\",\n    \"profession\": \"Employed\",\n    \"locality\": \"dafadfadf\",\n    \"no_of_guests\": \"1\",\n    \"address\": \"adfadfdafdafdafdafda\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

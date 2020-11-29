@@ -23,20 +23,20 @@ class ParticipantModel extends CI_Model{
   }
 
 
-   public function insert_data($data = array()){
-       return $this->db->insert("tbl_students", $data);
+   public function insert_data($table, $data = array()){
+       return $this->db->insert($table, $data);
    }
 
 
    public function delete_data($table, $id){
      // delete method
-     $this->db->where("id", $student_id);
-     return $this->db->delete("tbl_students");
+     $this->db->where("id", $id);
+     return $this->db->delete($table);
    }
 
 
    public function update_data($table, $id, $data){
       $this->db->where("id", $id);
-      return $this->db->update("tbl_students", $informations);
+      return $this->db->update($table, $data);
    }
 }

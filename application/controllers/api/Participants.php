@@ -26,7 +26,9 @@ class Participants extends REST_Controller{
 
 
 
-
+/***
+Mehtod :: GET
+***/
 
 public function index_get($limit = 0, $offset = 10){
 
@@ -63,35 +65,17 @@ public function index_get($limit = 0, $offset = 10){
 }
 
 
+/***
+method :: POST
+***/
+
+
 public function index_post($limit = 0, $offset = 10){
+  //Storing the data 
+  //POST Mehtod
 
 
-    $participantsData = $this->ParticipantModel->get_participants( intval($limit), intval($offset) );
-    
-    if( !empty($participantsData) )
-    {
-
-          //If Data is not empty form DB
-          $this->response(
-            array(
-                "status" => true,
-                "message" => "Data Fount",
-                "data" => [$participantsData]
-          ), REST_Controller::HTTP_OK);
-
-
-    }
-    else
-    {
-          //If there is no data in database
-          $this->response(
-            array(
-                "status" => false,
-                "message" => "No data found",
-                "data" => []
-          ), REST_Controller::HTTP_OK);
-
-    }
+   print_r($this->input->post());die;
 
       
 
